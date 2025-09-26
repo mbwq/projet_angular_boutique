@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product-service';
+import { ProductCard } from "../product-card/product-card";
 
 @Component({
   selector: 'app-homepage',
-  imports: [],
+  imports: [ProductCard],
   templateUrl: './homepage.html',
   styleUrl: './homepage.scss'
 })
@@ -17,6 +18,8 @@ export class Homepage {
     private productService: ProductService
   ) {}
 
+  products:any = [];
+
 
   ngOnInit() {
 
@@ -27,15 +30,19 @@ export class Homepage {
 
 
 
-
     this.productService.getProducts().subscribe({
-      next: (products) => {
-        console.log('Produits recuperes:', products);
+      next: (apiResponce) => {
+        console.log('Produits recuperes:', apiResponce);
+        this.products = apiResponce;
       },
       error: (error) => {
         console.error('Erreur lors recuperation des produits');
       }
     });
+  }
+
+  onSubmit() {
+    console.log();
   }
 
   

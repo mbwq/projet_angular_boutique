@@ -4,6 +4,6 @@ import { Login } from './components/login/login';
 
 export const routes: Routes = [
 
-    { path: '', component:Homepage},
+    { path: '', component:Homepage}, //route par defaut
     { path: 'Login', component:Login} //la route login(page de connexion)
 ];
