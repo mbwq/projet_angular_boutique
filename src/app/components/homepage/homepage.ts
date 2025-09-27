@@ -28,7 +28,7 @@ export class Homepage {
     this.createdAd = new Date();
     this.imageUrl = 'https://france-lab.com/wp-content/uploads/2017/09/PSG_Logo.jpg';
 
-
+    
 
     this.productService.getProducts().subscribe({
       next: (apiResponce) => {
