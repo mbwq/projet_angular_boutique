@@ -1,17 +1,14 @@
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
-  gap: 20px; /* espace entre les colonnes */
-  padding: 20px;
-}
 
-.product-item {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 16px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+.product-item{
+    max-width:200px;
+    border:1px solid #151313;
+    margin:10px;
+    padding:10px;
+    text-align:center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    transition: transform 0.2s;
 }
 
 

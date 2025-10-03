@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,8 +9,15 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductCard {
   @Input() product: any;
+  @Output() OnClicke = new EventEmitter<any>();
 
   constructor() { }
 
+
   ngOnInit(): void{}
+
+  onProductClick(event: any) {
+    console.log(event);
+    this.OnClicke.emit({event:event, product:this.product});
+  }
 }

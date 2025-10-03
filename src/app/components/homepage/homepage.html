@@ -1,22 +1,32 @@
-<h3>Bienvenue Fanatic!</h3>
-<img [src]="imageUrl" [alt]="title">
 
+<div class="mise_container">
 
-<p>{{ description }}</p>
+  <h3>Bienvenue Fanatic!</h3>
+  <img [src]="imageUrl" [alt]="title">
 
+  <h6>{{ description }}</h6>
+</div>
 
-
-<div class="products-container d-flex-wrap">
-  @for (item of products; track $index) {
-    <app-product-card [product]="item"></app-product-card>
+<div class="fixed d-flex flex-column justify-content-center flex-wrap">
+  <h4>Panier</h4>
+  @for(product of cart; track $index) {
+    <div class="d-flex flex-column p-3 m-2">
+      <p>{{products.title}}</p>
+    </div>
   }
 </div>
 
-<!--
-<p>
-    <button>connectez-vous</button>
-</p>
--->
+<h2>les produit</h2>
+
+<div class="products-container d-flex flex-wrap justify-content-center">
+  @for (item of products; track $index) {
+    <app-product-card [product]="item"
+    ></app-product-card>
+  }
+</div>
+
+
+
 <footer>
   <p> Creé le {{ createdAd }}</p>
 </footer>

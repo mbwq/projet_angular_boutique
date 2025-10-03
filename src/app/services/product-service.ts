@@ -7,9 +7,24 @@ import { inject, Injectable } from '@angular/core';
 export class ProductService {
   private http = inject(HttpClient);
 
-  constructor() {}
+  public cart: any[] = [];
+  constructor() {
+    this.cart = JSON.parse(<string>localStorage.getItem('cart'));
+    console.log(this.cart);
+    if (!this.cart) {
+      localStorage.setItem('cart', JSON.stringify([]));
+      this.cart = [];
+    }
+  }
 
   getProducts() {
     return this.http.get('https://fakestoreapi.com/products');
+  }
+
+  addToCart(product: any) {
+    this.cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    console.log(this.cart);
+    return this.cart;
   }
 }
