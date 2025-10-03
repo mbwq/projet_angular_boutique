@@ -11,13 +11,14 @@ import { UserService } from '../../services/user-service';
 })
 export class Login {
   loginForm: FormGroup;
+  //user: any; pour observable
 
   constructor(
     private userService: UserService
   ) {
     this.loginForm = new FormGroup({
       username: new FormControl('johnd', [Validators.required]),
-      password: new FormControl('m38rmF%', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('m38rmF$', [Validators.required, Validators.minLength(6)]),
     });
   }
 
@@ -26,9 +27,12 @@ export class Login {
       next: (response) => {
         console.log(response);
       },
-      error: (error) => {}
+      error: (error) => {
+        console.error('Erreur lors de la récupération des utilisateurs', error);
+      }
     });
   }
+  
   onSubmit() {
     console.log(this.loginForm);
     if (this.loginForm.valid) {
@@ -36,7 +40,8 @@ export class Login {
       this.userService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe({
         next: (response:any) => {
           console.log('Connexion réussie', response);
-          localStorage.setItem('token', JSON.stringify(response.token));
+          //localStorage.setItem('token', JSON.stringify(response.token));
+          this.userService.setToken(response.token);
         },
         error: (error) => {
           console.error('Erreur lors de connexion', error);
@@ -48,7 +53,21 @@ export class Login {
       this.loginForm.markAllAsTouched();//affiche les erreur
     }
   }
+
   get username() {
     return this.loginForm.get('username');
   }
+
+  /*ngOnCreate() {
+    this.userService.getUser('1').subscribe({
+      next: (response) => {
+        this.user = response;
+        console.log(this.user);
+      },
+      error: (error) => {
+        console.error('Erreur lors de la récupération de l\'utilisateur', error);
+      }
+    });
+  }*/
+
 }
