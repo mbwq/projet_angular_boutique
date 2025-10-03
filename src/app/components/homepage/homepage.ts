@@ -22,6 +22,7 @@ export class Homepage {
 
   products:any = [];
   cart: any = [];
+  isCartOpen: boolean = false;
 
   ngOnInit() {
 
@@ -41,6 +42,7 @@ export class Homepage {
         console.error('Erreur lors recuperation des produits', error);
       }
     });
+
     this.cart = this.productService.cart;
     console.log("cart =",this.cart);
   }
@@ -51,6 +53,16 @@ export class Homepage {
     console.log('Produit cliqué:', product);
     this.cart = this.productService.addToCart(callback.product);
     console.log("cart =",this.cart);
+    this.isCartOpen = true;
+  }
+
+  handleRemoveClick(productRemove: any) {
+    console.log('Produit à retirer:', productRemove);
+    this.cart = this.productService.removeCart(this.products);
+  }
+
+  toggleCart() {
+    this.isCartOpen = !this.isCartOpen;
   }
   
 }

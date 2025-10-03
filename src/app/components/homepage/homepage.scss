@@ -13,3 +13,23 @@ img {
 h6 {
   margin-left: 44%;
 }
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px; /* caché hors écran */
+  width: 400px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+  transition: right 0.3s ease;
+  z-index: 1050;
+  overflow-y: auto;
+}
+
+.cart-sidebar.open {
+  right: 0; /* visible */
+}
+.cart-header {
+  border-bottom: 1px solid #ddd;
+}

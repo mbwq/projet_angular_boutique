@@ -10,7 +10,7 @@ import { UserService } from './services/user-service';
   styleUrl: './app.scss'
 })
 export class App {
-  isLoggedIn: boolean = false;
+
   tokenSubscription: any;
   token: String = '';
 

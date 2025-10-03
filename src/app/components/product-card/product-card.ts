@@ -18,6 +18,7 @@ export class ProductCard {
 
   onProductClick(event: any) {
     console.log(event);
-    this.OnClicke.emit({event:event, product:this.product});
+    this.OnClicke.emit({event: event, product:this.product});
   }
+
 }

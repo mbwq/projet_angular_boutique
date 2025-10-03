@@ -7,20 +7,30 @@
   <h6>{{ description }}</h6>
 </div>
 
-<div class="fixed d-flex flex-column justify-content-center flex-wrap">
-  <h4>Panier</h4>
+<!-- Bouton pour ouvrir/fermer -->
+<button class="btn btn-outline-primary m-3" (click)="toggleCart()">
+  🛒 Voir Panier ({{ cart.length }})
+</button>
+
+
+<div class="cart-sidebar" [class.open]="isCartOpen">
+  <h4>🛒 Panier</h4>
   @for(product of cart; track $index) {
     <div class="d-flex flex-column p-3 m-2">
-      <p>{{products.title}}</p>
+      <p>{{product.title}}</p>
+      <button (click)="handleRemoveClick(products)" class="btn btn-sm btn-danger">Supprimer</button>
     </div>
   }
+  <button (click)="isCartOpen = false" class="btn btn-secondary">Fermer</button> <!--ici en ferme le panier-->
 </div>
 
-<h2>les produit</h2>
+
+<!--<h2>les produit</h2>-->
 
 <div class="products-container d-flex flex-wrap justify-content-center">
   @for (item of products; track $index) {
     <app-product-card [product]="item"
+    (OnClicke)="handleProductClick($event)"
     ></app-product-card>
   }
 </div>
@@ -29,5 +39,6 @@
 
 <footer>
   <p> Creé le {{ createdAd }}</p>
+  <p>© copyright 2025, Tous les droits reservés.</p> 
 </footer>
 

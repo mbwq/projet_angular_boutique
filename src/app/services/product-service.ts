@@ -27,4 +27,11 @@ export class ProductService {
     console.log(this.cart);
     return this.cart;
   }
+
+  removeCart(product: any) {
+    this.cart.splice(product ,1);
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    
+    return this.cart;
+  }
 }
