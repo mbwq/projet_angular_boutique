@@ -11,7 +11,12 @@
 <button class="btn btn-outline-primary m-3" (click)="toggleCart()">
   🛒 Voir Panier ({{ cart.length }})
 </button>
-
+    <!--ici on affiche le nom de l'utilisateur-->
+    @if(user){
+       <div>
+          <h2>Bienvenue {{user.name.firstname}} {{user.name.lastname}}</h2>
+        </div>
+      }
 
 <div class="cart-sidebar" [class.open]="isCartOpen">
   <h4>🛒 Panier</h4>

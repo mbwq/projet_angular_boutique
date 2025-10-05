@@ -11,7 +11,7 @@ import { UserService } from '../../services/user-service';
 })
 export class Login {
   loginForm: FormGroup;
-  //user: any; pour observable
+  
 
   constructor(
     private userService: UserService
@@ -57,17 +57,5 @@ export class Login {
   get username() {
     return this.loginForm.get('username');
   }
-
-  /*ngOnCreate() {
-    this.userService.getUser('1').subscribe({
-      next: (response) => {
-        this.user = response;
-        console.log(this.user);
-      },
-      error: (error) => {
-        console.error('Erreur lors de la récupération de l\'utilisateur', error);
-      }
-    });
-  }*/
 
 }

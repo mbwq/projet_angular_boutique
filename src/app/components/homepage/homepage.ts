@@ -14,6 +14,7 @@ export class Homepage {
   description!: string;
   createdAd!: Date;
   imageUrl!: string;
+  user: any; //pour observable
 
   constructor(
     private userService: UserService,
@@ -31,7 +32,7 @@ export class Homepage {
     this.createdAd = new Date();
     this.imageUrl = 'https://france-lab.com/wp-content/uploads/2017/09/PSG_Logo.jpg';
 
-    
+    this.loadUser('1');
 
     this.productService.getProducts().subscribe({
       next: (apiResponce) => {
@@ -63,6 +64,21 @@ export class Homepage {
 
   toggleCart() {
     this.isCartOpen = !this.isCartOpen;
+  }
+
+    loadUser(username: string) {
+    this.userService.getUser(username).subscribe({
+      next: (data) => {
+        this.user = data;
+        console.log('Utilisateur récupéré :', data);
+      },
+      error: (error) => {
+        console.error('Erreur lors de la récupération de l\'utilisateur', error);
+      },
+      complete: () => {
+        console.log('Requête terminée');
+      }
+    });
   }
   
 }

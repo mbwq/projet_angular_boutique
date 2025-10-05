@@ -41,8 +41,8 @@ export class UserService {
     return this.http.get('https://fakestoreapi.com/users');
   }
   // observable
-  getUser(id: string): Observable<any> {
-    return this.http.get(`https://fakestoreapi.com/users/${id}`);
+  getUser(username: string): Observable<any> {
+    return this.http.get(`https://fakestoreapi.com/users/${username}`);
   }
 
   logout() {
