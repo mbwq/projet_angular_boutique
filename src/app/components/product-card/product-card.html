@@ -1,8 +1,8 @@
 
     <div class="product-item">
-        <img [src]="product.image" alt="{{ product.title}}" width="100">
-        <h4>{{ product.title }}</h4>
+        <img [src]="product.image" alt="{{ product.photo_principale}}" width="100">
+        <h4>{{ product.nom }}</h4>
         <p>{{ product.description }}</p>
-        <p>Prix: {{ product.price }} USD</p>
+        <p>Prix: {{ product.prix }} EUR</p>
         <button class="btn btn-primary" (click)="onProductClick($event)">Ajouter au panier</button>
     </div>

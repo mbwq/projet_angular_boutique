@@ -18,7 +18,7 @@ export class ProductService {
   }
 
   getProducts() {
-    return this.http.get('https://fakestoreapi.com/products');
+    return this.http.get('http://127.0.0.1:8000/api/produits');
   }
 
   addToCart(product: any) {
