@@ -15,38 +15,54 @@ export class UserService {
     private router: Router,
     @Inject(PLATFORM_ID)private platformId: Object
   ) {
-    this.tokenSubject = new BehaviorSubject<String>('');
-    if (isPlatformBrowser(this.platformId)){
-      this.tokenSubject = new BehaviorSubject<String>(JSON.parse(<string>localStorage.getItem('token')));
+    if (isPlatformBrowser(this.platformId)) {
+      let storedToken = '';
+    try {
+      const raw = localStorage.getItem('token');
+      storedToken = raw ? JSON.parse(raw) : '';
+    } catch (error) {
+      console.warn('Token invalide dans le localStorage, réinitialisation.');
+      localStorage.removeItem('token');
     }
+      this.tokenSubject = new BehaviorSubject<String>(storedToken);
+    } else {
+      this.tokenSubject = new BehaviorSubject<String>('');
+    }
+
   }
 
   public get token(): String {
     return this.tokenSubject.value;
   }
+
   setToken(token: String) {
-    localStorage.setItem('token', JSON.stringify(token));
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('token', JSON.stringify(token));
+    }
     this.tokenSubject.next(token);
   }
 
-  login(username: string, password: string) {
-    return this.http.post('https://fakestoreapi.com/auth/login', { username, password});
+  login(email: string, password: string) {
+    return this.http.post('http://127.0.0.1:8000/api/connexion', { email, password});
   }
 
-  signin(username: string, password: string, email: string) {
-    return this.http.post('https://fakestoreapi.com/users', { username, password, email});
+  signin(name: string, firstname: string, email: string, password: string, password_confirmation: string) {
+    return this.http.post('http://127.0.0.1:8000/api/inscription', { name, firstname, email, password, password_confirmation});
   }
 
   getAll() {
-    return this.http.get('https://fakestoreapi.com/users');
+    return this.http.get('http://127.0.0.1:8000/api/liste_user');
   }
   // observable
-  getUser(username: string): Observable<any> {
-    return this.http.get(`https://fakestoreapi.com/users/${username}`);
+  getUser(mail: string): Observable<any> {
+    return this.http.get(`http://127.0.0.1:8000/api/liste_user/${mail}`);
   }
 
   logout() {
     this.setToken('');
+    if (isPlatformBrowser(this.platformId)){
+      localStorage.removeItem('token');
+    }
     this.router.navigate(['/']);
   }
 

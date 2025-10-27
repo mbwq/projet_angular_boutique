@@ -62,12 +62,17 @@ export class Homepage {
     this.cart = this.productService.removeCart(this.products);
   }
 
+  handleAppendClick(productAppend: any) {
+    //console.log('Produit à validé:', productAppend);
+    //this.cart = this.productService.removeCart(this.products);
+  }
+
   toggleCart() {
     this.isCartOpen = !this.isCartOpen;
   }
 
-    loadUser(username: string) {
-    this.userService.getUser(username).subscribe({
+    loadUser(mail: string) {
+    this.userService.getUser(mail).subscribe({
       next: (data) => {
         this.user = data;
         console.log('Utilisateur récupéré :', data);

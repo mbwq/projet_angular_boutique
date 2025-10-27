@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../services/user-service';
@@ -14,11 +15,12 @@ export class Login {
   
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     this.loginForm = new FormGroup({
-      username: new FormControl('johnd', [Validators.required]),
-      password: new FormControl('m38rmF$', [Validators.required, Validators.minLength(6)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
@@ -37,11 +39,12 @@ export class Login {
     console.log(this.loginForm);
     if (this.loginForm.valid) {
       console.log('Formulaire valide:', this.loginForm.value);
-      this.userService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe({
+      this.userService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
         next: (response:any) => {
           console.log('Connexion réussie', response);
           //localStorage.setItem('token', JSON.stringify(response.token));
           this.userService.setToken(response.token);
+          this.router.navigate(['']);
         },
         error: (error) => {
           console.error('Erreur lors de connexion', error);
@@ -54,8 +57,8 @@ export class Login {
     }
   }
 
-  get username() {
-    return this.loginForm.get('username');
+  get email() {
+    return this.loginForm.get('email');
   }
 
 }

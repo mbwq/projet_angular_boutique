@@ -5,16 +5,16 @@
     
     <div class="form-floating mb-3">
       <div class="form-group">
-        <label>Nom utilisateur :</label>
-        <input type="text" formControlName="username" class="form-control" id="floatingInput" placeholder="entre votre nom d'utilisateur">
-        @if (username && username.hasError('required')) {
+        <label>Votre Email :</label>
+        <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="entre votre nom Email">
+        @if (email && email.hasError('required')) {
           <div>
-            Nom est requis.
+            Email est requis.
           </div>
         }
-        @if (username && username.hasError('minlength')) {
+        @if (email && email.hasError('minlength')) {
           <div>
-            Name must be at least 4 characters long.
+            Email valide please.
           </div>
         }
       </div>

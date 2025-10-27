@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
 import { UserService } from '../../services/user-service';
 
 @Component({
@@ -15,11 +15,23 @@ export class Signin {
     private userService: UserService
   ) {
     this.signupForm = new FormGroup({
-      username: new FormControl('Pepe', [Validators.required, Validators.minLength(3)]),
+      name: new FormControl('Angelme', [Validators.required, Validators.minLength(4)]),
+      firstname: new FormControl('Pepe', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('pepe@gmail.com', [Validators.required, Validators.email]),
       password: new FormControl('qweqweqwe', [Validators.required, Validators.minLength(6)]),
+      password_confirmation: new FormControl('qweqweqwe', [Validators.required, Validators.minLength(6)]),
+    }, {
+      validators: this.passwordsMatchValidator
     });
   }
+
+  passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const form = control as FormGroup;
+    const pass = form.get('password')?.value;
+    const passConf = form.get('password_confirmation')?.value;
+    return pass === passConf ? null : { mismatch: true };
+  }
+
 
   onInit() {
 
@@ -29,7 +41,7 @@ export class Signin {
     console.log(this.signupForm);
     if (this.signupForm.valid) {
       console.log('Formulaire valide:', this.signupForm);
-      this.userService.signin(this.signupForm.value.username, this.signupForm.value.password, this.signupForm.value.email).subscribe({
+      this.userService.signin(this.signupForm.value.name,this.signupForm.value.firstname,this.signupForm.value.email, this.signupForm.value.password, this.signupForm.value.password_confirmation).subscribe({
         next: (response: any) => {
 
           console.log('Connexion réussi', response);
@@ -51,7 +63,12 @@ export class Signin {
     }
   }
 
-  get username() {
-    return this.signupForm.get('username');
+  // Accesseurs pour faciliter l'affichage/validation dans le template
+  get name() {
+    return this.signupForm.get('name');
+  }
+
+  get firstname() {
+    return this.signupForm.get('firstname');
   }
 }

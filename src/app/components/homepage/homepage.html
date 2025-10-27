@@ -1,7 +1,8 @@
 
 <div class="mise_container">
 
-  <h3>Bienvenue Fanatic!</h3>
+          <h3>Bienvenue Fanatic!</h3>
+  
   <img [src]="imageUrl" [alt]="title">
 
   <h6>{{ description }}</h6>
@@ -11,19 +12,15 @@
 <button class="btn btn-outline-primary m-3" (click)="toggleCart()">
   🛒 Voir Panier ({{ cart.length }})
 </button>
-    <!--ici on affiche le nom de l'utilisateur-->
-    @if(user){
-       <div>
-          <h2>Bienvenue {{user.name.firstname}} {{user.name.lastname}}</h2>
-        </div>
-      }
+
 
 <div class="cart-sidebar" [class.open]="isCartOpen">
   <h4>🛒 Panier</h4>
   @for(product of cart; track $index) {
     <div class="d-flex flex-column p-3 m-2">
-      <p>{{product.title}}</p>
-      <button (click)="handleRemoveClick(products)" class="btn btn-sm btn-danger">Supprimer</button>
+      <p>{{product.nom}}</p>
+      <button (click)="handleRemoveClick(products)" class="btn btn-sm btn-danger">Supprimer</button><br>
+      <button class="btn btn-sm btn-success">envoyer achat</button>
     </div>
   }
   <button (click)="isCartOpen = false" class="btn btn-secondary">Fermer</button> <!--ici en ferme le panier-->

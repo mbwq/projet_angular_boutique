@@ -3,16 +3,31 @@
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
-      <label>Nom d'utilisateur :</label>
-      <input type="text" formControlName="username" class="form-control">
-      @if (username && username.hasError('required')) {
+      <label>Nom :</label>
+      <input type="text" formControlName="name" class="form-control">
+      @if (name && name.hasError('required')) {
         <div>
-          Name is required.
+          Nom est requis.
         </div>
       }
-      @if (username && username.hasError('minlength')) {
+      @if (name && name.hasError('minlength')) {
         <div>
           Name must be at least 4 characters long.
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Prenom :</label>
+      <input type="text" formControlName="firstname" class="form-control">
+      @if ( firstname && firstname.hasError('required')) {
+        <div>
+          firstname is required.
+        </div>
+      }
+      @if (firstname && firstname.hasError('minlength')) {
+        <div>
+          firstname must be at least 3 characters long.
         </div>
       }
     </div>
@@ -37,6 +52,17 @@
       }
     </div>
 
+    <div class="form-group">
+      <label>Confirmer le mot de passe :</label>
+      <input type="password" formControlName="password_confirmation" class="form-control">
+      @if(signupForm.hasError('mismatch') && signupForm.get('password_confirmation')?.touched){
+        <div class="error">
+          Les mots de passe ne correspondent pas.
+        </div>
+      }
+    </div>
+
+
     
 
     <button type="submit" class="btn btn-primary mt-3">S’inscrire</button>
@@ -45,5 +71,3 @@
 </div>
 
 
-
-<p>signin works!</p>
