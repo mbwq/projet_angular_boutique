@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { ProductService } from '../../services/product-service';
 import { ProductCard } from "../product-card/product-card";
 import { UserService } from '../../services/user-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-homepage',
-  imports: [ProductCard],
+  imports: [ProductCard, FormsModule],
   templateUrl: './homepage.html',
   styleUrl: './homepage.scss'
 })

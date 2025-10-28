@@ -1,0 +1,14 @@
+<h2 class="text-center my-3">Catégorie : Accessoire</h2>
+
+<div class="product-list">
+  @for (item of produit; track $index) {
+    <div class="product-item">
+      <img [src]="item.image" alt="{{ item.photo_principale }}" width="100">
+      <h4>{{ item.nom }}</h4>
+      <p>{{ item.description }}</p>
+      <p>Prix: {{ item.prix }} €</p>
+    </div>
+  }
+</div>
+
+<p>accessoire works!</p>

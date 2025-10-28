@@ -1,7 +1,7 @@
 
 <div class="mise_container">
 
-          <h3>Bienvenue Fanatic!</h3>
+        <h3>Bienvenue Fanatic!</h3>
   
   <img [src]="imageUrl" [alt]="title">
 
@@ -17,8 +17,12 @@
 <div class="cart-sidebar" [class.open]="isCartOpen">
   <h4>🛒 Panier</h4>
   @for(product of cart; track $index) {
-    <div class="d-flex flex-column p-3 m-2">
+    <div class="d-flex flex-column p-3 m-2 border rounded">
       <p>{{product.nom}}</p>
+      <p>Prix unitaire: {{ product.prix }} €</p>
+      <p>
+        <input type="number" [(ngModel)]="product.quantity" min="1" (change)="product.total = product.quantity * product.prix" />
+      </p>
       <button (click)="handleRemoveClick(products)" class="btn btn-sm btn-danger">Supprimer</button><br>
       <button class="btn btn-sm btn-success">envoyer achat</button>
     </div>
@@ -36,6 +40,7 @@
     ></app-product-card>
   }
 </div>
+
 
 
 
