@@ -26,6 +26,11 @@ export class ProductService {
     return this.http.get(`http://127.0.0.1:8000/api/categorie/${id}`);
   }
 
+  //pour crée des produit
+  /*getCreate() {
+    return this.http.get('http://127.0.0.1:8000/api/admin/createProduit');
+  }*/
+
   addToCart(product: any) {
     this.cart.push(product);
     localStorage.setItem('cart', JSON.stringify(this.cart));

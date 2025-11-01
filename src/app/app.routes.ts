@@ -6,6 +6,9 @@ import { Panier } from './components/panier/panier';
 import { Maillot } from './components/maillot/maillot';
 import { Echarpe } from './components/echarpe/echarpe';
 import { Accessoire } from './components/accessoire/accessoire';
+import { Dashboard } from './admin/dashboard/dashboard';
+import { Setting } from './components/setting/setting';
+import { Restock } from './admin/restock/restock';
 
 
 export const routes: Routes = [
@@ -15,6 +18,9 @@ export const routes: Routes = [
     { path: 'Signin', component:Signin}, //la route sign-in(page de creation de compte)
     { path: 'Panier', component:Panier}, //la route basket(valider les produits)
     { path: 'maillots', component:Maillot}, //la route categorie maillot
-    { path: 'accessoires', component:Accessoire},
-    { path: 'echarpes', component:Echarpe}
+    { path: 'accessoires', component:Accessoire},//route accessoire porte cle ou autre décoration
+    { path: 'echarpes', component:Echarpe},//route des echarpe
+    { path: 'admin/dashboard', component:Dashboard},// route de tableau bord reserve au admin
+    { path: 'Setting', component:Setting}, //route paramètre compte utilisateur
+    { path: 'Restoke', component:Restock}
 ];

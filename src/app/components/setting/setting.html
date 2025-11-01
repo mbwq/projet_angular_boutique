@@ -1,0 +1,23 @@
+
+    <h2>Information de votre compte</h2>
+
+@if (user) {
+    <div class="profile">
+        <h3>Votre Profile</h3>
+        <p><strong>Nom:</strong> {{ user.name }}</p>
+        <p><strong>Prénom:</strong> {{ user.firstname }}</p>
+        <p>Email: {{ user.email}}</p>
+    </div>
+}
+
+<div class="modif">
+    <h4>Modifier votre compte</h4>
+    <button>Modifier les Information</button>
+</div>
+
+<div class="destroy text-danger">
+    <h4>Supprimer son Compte</h4>
+    <button>Supprimer</button>
+</div>
+
+<p>setting works!</p>

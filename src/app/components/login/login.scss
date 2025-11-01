@@ -1,7 +1,75 @@
-h1 {
-    text-align: center;
-    font-size: 1.8rem;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.signup-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #d8e1eb;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
 }
 
+.signup-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
 
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.role-message {
+  margin-bottom: 15px;
+  font-size: 0.95em;
+}
+
+.admin-msg {
+  color: #b30000;
+  font-weight: bold;
+}
+
+.user-msg {
+  color: #006600;
+  font-weight: bold;
+}

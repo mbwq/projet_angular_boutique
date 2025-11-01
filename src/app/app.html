@@ -6,10 +6,20 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
-        @if(token) {
+        <!--si admin connecter-->
+        @if(isAdmin){
+          <li class="nav-item"><a class="nav-link" routerLink="/admin/dashboard">Espace Administrateur</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="Setting">Account Setting</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="Restoke">Administere</a></li>
+          <li class="nav-item"><a class="nav-link text-danger" role="button" (click)="logoutAdmin()">Logout Admin</a></li>
+          <!--Sinon si c'est un simple user-->
+        }@else if(token) {
+          <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="Setting">Account Setting</a></li>
           <li class="nav-item"><a class="nav-link" role="button" (click)="logout()">Logout</a></li>
+          <!--sinon simple visiteur-->
         } @else {
+          <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/Login">Login</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/Signin">Signin</a></li>
         }
@@ -18,9 +28,9 @@
             Categorie
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/maillots">Maillot</a></li>
-            <li><a class="dropdown-item" routerLink="/accessoires">Accessoire</a></li>
-            <li><a class="dropdown-item" routerLink="/echarpes">Écharpe</a></li>
+            <li><a class="dropdown-item" routerLink="/maillots">Maillots</a></li>
+            <li><a class="dropdown-item" routerLink="/accessoires">Accessoires</a></li>
+            <li><a class="dropdown-item" routerLink="/echarpes">Écharpes</a></li>
           </ul>
         </li>
       </ul>

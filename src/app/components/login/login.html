@@ -3,12 +3,20 @@
   <h1>Se Connecter</h1>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     
+    <div class="form-group mb-3">
+      <label for="role">Type de connexion :</label>
+      <select formControlName="role" class="form-control" id="role">
+        <option value="user">Utilisateur</option>
+        <option value="admin">Personnel (Admin)</option>
+      </select>
+    </div>
+    
     <div class="form-floating mb-3">
       <div class="form-group">
         <label>Votre Email :</label>
         <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="entre votre nom Email">
-        @if (email && email.hasError('required')) {
-          <div>
+        @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+          <div class="error">
             Email est requis.
           </div>
         }
@@ -31,9 +39,12 @@
 
   </div>
 
+    <a href="reiniatilier">Reiniatiliser votre mot de passe</a><br>
+
       <div class="form-group">
         <button type="submit" class="btn btn-primary">SE CONNECTER</button>
       </div>
 
+    <p>Pas encore inscrit ? <a routerLink="/Signin">Créer un compte</a></p>
   </form>
 </div>

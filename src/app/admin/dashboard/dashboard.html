@@ -1,0 +1,78 @@
+<div class="mise_container">
+
+    <!-- Zone Admin -->
+  <div class="admin-section d-flex justify-content-between align-items-center p-3 mb-3 border rounded bg-light">
+    <h3>Espace Admin</h3>
+    <h5>👤 Admin : {{ admin?.name }}</h5>
+  </div>
+</div>
+
+<img [src]="imageAdminUrl" [alt]="imageAdminUrl">
+<h6>{{ description }}</h6>
+
+<div class="container mt-4">
+  <h3>Produit Liste</h3>
+  <a href="Restoke" class="btn btn-outline-info m-2">Ajoute Produit</a>
+  <table class="table table-bordered table-dark table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th>Description</th>
+        <th>photo_principale</th>
+        <th>Categorie ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+  @for (product of products; track product.id) {
+    <tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.nom }}</td>
+      <td>{{ product.prix }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.photo_principale }}</td>
+      <td>{{ product.category_id }}</td>
+    <td>
+      <a class="btn btn-outline-info">View</a>
+      <a class="btn btn-outline-warning m-2">Edit</a>
+      <a class="btn btn-outline-danger">Delete</a>
+    </td>
+  </tr>
+  } @empty {
+    <tr>
+      <td colspan="7" class="text-center">Produit introuvable</td>
+    </tr>
+  }
+
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<!--<h2>les produit</h2>-->
+
+<!--<div class="products-container d-flex flex-wrap justify-content-center">
+  @for (item of products; track $index) {
+    <app-product-card [product]="item"
+    (OnClicke)="handleProductClick($event)"
+    ></app-product-card>
+  }
+</div>
+<p>dashboard works!</p>-->
+
+<!--footer-->
+<footer>
+  <p> Creé le {{ createdAd }}</p>
+      <div class="footer-links">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Contact</a></li>
+      </div>
+  <p>© copyright 2025, Tous les droits reservés.</p> 
+</footer>
+
