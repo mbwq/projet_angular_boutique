@@ -69,8 +69,8 @@ export class Dashboard {
     this.isCartOpen = !this.isCartOpen;
   }
 
-  loadUser() {
-    this.userService.getUser().subscribe({
+  loadUser(id:number) {
+    this.userService.getUser(id).subscribe({
       next: (data) => {
         this.admin = data;
         console.log('Utilisateur récupéré :', data);

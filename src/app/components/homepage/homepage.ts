@@ -31,9 +31,9 @@ export class Homepage {
     this.title = 'Fanatic PSG';
     this.description = 'FanBase du PSG, par des fan pour les fan 😎';
     this.createdAd = new Date();
-    this.imageUrl = 'https://france-lab.com/wp-content/uploads/2017/09/PSG_Logo.jpg';
+    this.imageUrl = 'https://www.logoshape.com/wp-content/uploads/2024/11/paris-saint-germain-logo_logoshape.png';
 
-    this.loadUser('1');
+    //this.loadUser(id);
 
     this.productService.getProducts().subscribe({
       next: (apiResponce) => {
@@ -72,8 +72,8 @@ export class Homepage {
     this.isCartOpen = !this.isCartOpen;
   }
 
-    loadUser(mail: string) {
-    this.userService.getUser(mail).subscribe({
+  loadUser(id:number) {
+    this.userService.getUser(id).subscribe({
       next: (data) => {
         this.user = data;
         console.log('Utilisateur récupéré :', data);

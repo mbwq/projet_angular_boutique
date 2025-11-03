@@ -1,1 +1,26 @@
+.update-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  background: #fff;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .alert {
+    text-align: center;
+  }
+}
 

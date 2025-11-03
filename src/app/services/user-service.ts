@@ -55,20 +55,41 @@ export class UserService {
     return this.http.get('http://127.0.0.1:8000/api/liste_user');
   }
   // observable
-  getUser(): Observable<any> {
+  getUser(id: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get('http://127.0.0.1:8000/api/listeUser/info', { headers });
+    return this.http.get(`http://127.0.0.1:8000/api/listeUser/info`, { headers });
   }
+
+
+  updateUser(id: number, data: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.post(`http://127.0.0.1:8000/api/setting/update/${id}`, data, { headers });
+  }
+
+
+  //
+  deleteUser(id: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(`http://127.0.0.1:8000/api/setting/delete/${id}`, {}, { headers });
+  }
+
 
   logout() {
     this.setToken('');
     if (isPlatformBrowser(this.platformId)){
       localStorage.removeItem('token');
     }
-    this.router.navigate(['/']);//page d'acceuil
+    this.router.navigate(['/Login']);//page d'acceuil
   }
 
 }

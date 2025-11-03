@@ -9,6 +9,8 @@ import { Accessoire } from './components/accessoire/accessoire';
 import { Dashboard } from './admin/dashboard/dashboard';
 import { Setting } from './components/setting/setting';
 import { Restock } from './admin/restock/restock';
+import { authGuard } from './helper/auth-guard';
+import { Update } from './components/update/update';
 
 
 export const routes: Routes = [
@@ -20,7 +22,8 @@ export const routes: Routes = [
     { path: 'maillots', component:Maillot}, //la route categorie maillot
     { path: 'accessoires', component:Accessoire},//route accessoire porte cle ou autre décoration
     { path: 'echarpes', component:Echarpe},//route des echarpe
-    { path: 'admin/dashboard', component:Dashboard},// route de tableau bord reserve au admin
+    { path: 'admin/dashboard', component:Dashboard, canActivate: [authGuard]},// route de tableau bord reserve au admin
     { path: 'Setting', component:Setting}, //route paramètre compte utilisateur
-    { path: 'Restoke', component:Restock}
+    { path: 'Restoke', component:Restock},
+    { path: 'EditUser', component:Update} //route mis a jour info utilisateur
 ];

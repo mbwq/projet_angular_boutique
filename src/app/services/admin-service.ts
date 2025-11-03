@@ -1,5 +1,5 @@
 import { Inject ,inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
@@ -25,6 +25,15 @@ export class AdminService {
 
   public get token(): String {
     return this.tokenSubject.value;
+  }
+
+    // observable
+  getUser(): Observable<any> {
+    const token = localStorage.getItem('admin_token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get('http://127.0.0.1:8000/api/listeUser/info', { headers });
   }
 
   setToken(token: String) {

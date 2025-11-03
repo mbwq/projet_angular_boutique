@@ -9,9 +9,19 @@
         <!--si admin connecter-->
         @if(isAdmin){
           <li class="nav-item"><a class="nav-link" routerLink="/admin/dashboard">Espace Administrateur</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="Setting">Account Setting</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="Restoke">Administere</a></li>
           <li class="nav-item"><a class="nav-link text-danger" role="button" (click)="logoutAdmin()">Logout Admin</a></li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Vos Pouvoir
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="Setting">Account Setting</a></li>
+            <li><a class="dropdown-item" routerLink="">Espace-creation</a></li>
+            <li><a class="dropdown-item" routerLink="">Espace-modification</a></li>
+            <li><a class="dropdown-item" routerLink="">Espace-suppression</a></li>
+          </ul>
+          </li>
           <!--Sinon si c'est un simple user-->
         }@else if(token) {
           <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>

@@ -44,6 +44,15 @@ h6 {
 }
 
 footer {
-  background-color:  #a1b4d9;
-  color: #000;
+  background-color: #a1b4d9; /* Couleur de fond sombre */
+  color: #242627; /* Texte clair */
+  text-align: center;
+  padding: 20px 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  border-top: 2px solid #34495e;
+}
+
+footer p {
+  margin: 5px 0;
 }

@@ -33,11 +33,22 @@ export class App {
     });
   }
 
+  ngOnAdmin() {
+    console.log(this.isAdmin);
+    this.tokenSubscription = this.adminService.tokenSubject.subscribe({
+      next: (token) => {
+        console.log('Token mis à jour:', token);
+        this.token = token;
+      }
+    });
+  }
+
   ngOnDestroy() {
     this.tokenSubscription.unsubscribe();
   }
 
   logout() {
+    console.log('deconnexion utilisateur', this.token)
     this.userService.logout();
   }
 
